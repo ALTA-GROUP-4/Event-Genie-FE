@@ -1,9 +1,12 @@
 import { FC } from "react";
+import { Layout } from "../components/Layout";
 const DetailEvent: FC = () => {
   return (
-    <div>
-      <p>DetailEvent</p>
-    </div>
+    <Layout>
+      <div>
+        <p>DetailEvent</p>
+      </div>
+    </Layout>
   );
 };
 

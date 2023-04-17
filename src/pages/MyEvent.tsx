@@ -1,9 +1,12 @@
 import { FC } from "react";
+import { Layout } from "../components/Layout";
 const MyEvent: FC = () => {
   return (
-    <div>
-      <p>MyEvent</p>
-    </div>
+    <Layout>
+      <div>
+        <p>MyEvent</p>
+      </div>
+    </Layout>
   );
 };
 

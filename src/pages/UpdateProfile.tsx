@@ -1,9 +1,12 @@
 import { FC } from "react";
+import { Layout } from "../components/Layout";
 const UpdateProfile: FC = () => {
   return (
-    <div>
-      <p>UpdateProfile</p>
-    </div>
+    <Layout>
+      <div>
+        <p>UpdateProfile</p>
+      </div>
+    </Layout>
   );
 };
 
