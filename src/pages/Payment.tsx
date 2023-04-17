@@ -1,9 +1,12 @@
 import { FC } from "react";
+import { Layout } from "../components/Layout";
 const Payment: FC = () => {
   return (
-    <div>
-      <p>Payment</p>
-    </div>
+    <Layout>
+      <div>
+        <p>Payment</p>
+      </div>
+    </Layout>
   );
 };
 
