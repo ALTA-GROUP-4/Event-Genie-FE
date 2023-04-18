@@ -1,12 +1,7 @@
 import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import {
-  ButtonDelete,
-  ButtonEdit,
-  ButtonOpen,
-  PrimButton,
-  SecButton,
-} from "./Button";
+import { PrimButton, SecButton } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 interface PropsHandling {
   event_name: string;
@@ -60,6 +55,7 @@ export const CardLanding: FC<PropsHandling> = (props) => {
 };
 export const CardMyEvent: FC<PropsMyEvent> = (props) => {
   const { event_name, event_image, MyLink, event_date, host_by, place } = props;
+  const navigate = useNavigate();
   return (
     //   {/* card start*/}
     <div className="hover:drop-shadow-lg hover:scale-105 duration-300  bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700">
@@ -94,9 +90,27 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
               </tr>
             </tbody>
             <div className="flex flex-row md:w-96">
-              <ButtonEdit />
-              <ButtonDelete />
-              <ButtonOpen />
+              <PrimButton
+                label="Edit"
+                id=" button-edit-event"
+                type="button"
+                className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                onClick={() => navigate("/update-event")}
+              />
+              <SecButton
+                label="Delete"
+                id=" button-delete-event"
+                type="button"
+                className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border border-@19345E text-lg bg-@EBF2FA text-@19345E font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              />
+
+              <PrimButton
+                label="Open"
+                id=" button-edit-event"
+                type="button"
+                className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                onClick={() => navigate("/update-event")}
+              />
             </div>
           </table>
         </div>
