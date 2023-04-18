@@ -2,13 +2,13 @@ import { FC } from "react";
 import { Input, TextArea } from "../components/Input";
 import { Layout } from "../components/Layout";
 import { ButtonSubmit, PrimButton } from "../components/Button";
-const AddEvent: FC = () => {
+const UpdateEvent: FC = () => {
   return (
     <Layout>
       <div className="my-6 px-6 justify-center items-center">
         <div>
-          <h1 className="flex px-6 items-center justify-center font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
-            Create New Event
+          <h1 className="flex justify-center items-center uppercase font-bold text-@19345E text-xl md:text-2xl lg:text-3xl">
+            Update Event
           </h1>
         </div>
         <div className="flex flex-col  md:flex-row my-6 px-6 justify-center items-center gap-4">
@@ -109,7 +109,7 @@ const AddEvent: FC = () => {
         </div>
         <div className="flex justify-center items-center">
           <PrimButton
-            label="Submit"
+            label="Update"
             id=" button-add-ticket"
             type="submit"
             className="w-40 bg-@19345E text-@EBF2FA font-semibold py-2 px-8 
@@ -121,4 +121,4 @@ const AddEvent: FC = () => {
   );
 };
 
-export default AddEvent;
+export default UpdateEvent;

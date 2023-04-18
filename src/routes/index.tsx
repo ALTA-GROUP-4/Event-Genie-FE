@@ -13,6 +13,7 @@ import DetailEvent from "../pages/DetailEvent";
 import UpdateProfile from "../pages/UpdateProfile";
 import Payment from "../pages/Payment";
 import AddEvent from "../pages/AddEvent";
+import UpdateEvent from "../pages/UpdateEvent";
 import MyTicket from "../pages/MyTicket";
 
 const Routes = () => {
@@ -44,6 +45,10 @@ const Routes = () => {
     {
       path: "/add-event",
       element: <AddEvent />,
+    },
+    {
+      path: "/update-event",
+      element: <UpdateEvent />,
     },
     {
       path: "/update-users",
