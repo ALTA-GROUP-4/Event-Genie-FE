@@ -102,3 +102,16 @@ export const PrimButton: FC<PrimButton> = (props) => {
     </button>
   );
 };
+export const SecButton: FC<PrimButton> = (props) => {
+  const { label } = props;
+
+  return (
+    <button
+      className="bg-white text-[#19345E] font-semibold py-2 px-8 w-full
+    rounded-lg border border-[#19345E] hover:bg-gray-300 active:bg-gray-200 disabled:bg-gray-400"
+      {...props}
+    >
+      {label}
+    </button>
+  );
+};
