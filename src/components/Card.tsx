@@ -1,6 +1,12 @@
 import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ButtonDelete, ButtonEdit, ButtonOpen } from "./Button";
+import {
+  ButtonDelete,
+  ButtonEdit,
+  ButtonOpen,
+  PrimButton,
+  SecButton,
+} from "./Button";
 
 interface PropsHandling {
   event_name: string;
@@ -16,6 +22,13 @@ interface PropsMyEvent {
   host_by: string;
   place: string;
   MyLink: string;
+}
+interface PropsMyTickets {
+  event_image: string;
+  event_name: string;
+  event_date: string;
+  host_by: string;
+  place: string;
 }
 
 export const CardLanding: FC<PropsHandling> = (props) => {
@@ -84,6 +97,49 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
               <ButtonEdit />
               <ButtonDelete />
               <ButtonOpen />
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+    //   {/* card end*/}
+  );
+};
+
+export const CardMyTicket: FC<PropsMyTickets> = (props) => {
+  const { event_name, event_image, event_date, host_by, place } = props;
+  return (
+    //   {/* card start*/}
+    <div className="hover:drop-shadow-lg hover:scale-105 duration-300  bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700">
+      <div className="flex flex-col md:flex-row px-2 py-5 md:pt-5 items-center ">
+        <img
+          className="w-auto h-40 md:h-44 rounded-lg"
+          src={event_image}
+          alt="Image Description"
+        />
+        <div className="h-full ml-2 sm:ml-5 md:ml-7 flex flex-col">
+          <table>
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              {" "}
+              <tr className="border-b-4">
+                <td className=" text-@19345E text-md md:text-xl  xl:text-3xl dark:text-gray-200">
+                  {event_name}
+                </td>
+              </tr>{" "}
+              <tr className="border-b-4">
+                <td className="whitespace-nowrap text-md md:text-lg text-slate-400 dark:text-gray-200">
+                  {event_date}
+                </td>
+              </tr>
+              <tr className="border-b-4">
+                <td className="whitespace-nowrap text-md md:text-lg text-slate-400 dark:text-gray-200">
+                  Hosted by : {host_by}, {place}
+                </td>
+              </tr>
+            </tbody>
+            <div className="flex flex-row md:w-96">
+              <PrimButton label="Print as PDF" id="print-to-pdf" />
+              <SecButton label="Details" id="detail-ticket" />
             </div>
           </table>
         </div>

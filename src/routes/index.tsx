@@ -13,6 +13,7 @@ import DetailEvent from "../pages/DetailEvent";
 import UpdateProfile from "../pages/UpdateProfile";
 import Payment from "../pages/Payment";
 import AddEvent from "../pages/AddEvent";
+import MyTicket from "../pages/MyTicket";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const Routes = () => {
     {
       path: "/payment",
       element: <Payment />,
+    },
+    {
+      path: "/my-ticket",
+      element: <MyTicket />,
     },
   ]);
   return <RouterProvider router={router} />;
