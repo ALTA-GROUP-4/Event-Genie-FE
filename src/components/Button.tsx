@@ -1,8 +1,11 @@
-import { FC } from "react";
+import { FC, ButtonHTMLAttributes } from "react";
 
 interface Props {
   navigator: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+interface PrimButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+  label: string;
 }
 
 export const ButtonSubmit: FC<Partial<Props>> = (props) => {
@@ -82,6 +85,20 @@ export const ButtonClose: FC<Partial<Props>> = (props) => {
       onClick={onClick}
     >
       Close
+    </button>
+  );
+};
+
+export const PrimButton: FC<PrimButton> = (props) => {
+  const { label } = props;
+
+  return (
+    <button
+      className="bg-[#19345E] text-slate-200 font-semibold py-2 px-8 w-full
+    rounded-lg border border-white hover:bg-[#1A3BC3] active:bg-[#2c4fdd] disabled:bg-[#3f4958]"
+      {...props}
+    >
+      {label}
     </button>
   );
 };
