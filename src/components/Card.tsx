@@ -109,7 +109,6 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
                 id=" button-edit-event"
                 type="button"
                 className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                onClick={() => navigate("/update-event")}
               />
             </div>
           </table>
@@ -152,8 +151,18 @@ export const CardMyTicket: FC<PropsMyTickets> = (props) => {
               </tr>
             </tbody>
             <div className="flex flex-row md:w-96">
-              <PrimButton label="Print as PDF" id="print-to-pdf" />
-              <SecButton label="Details" id="detail-ticket" />
+              <PrimButton
+                label="Print as PDF"
+                id="print-to-pdf"
+                type="button"
+                className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              />
+              <SecButton
+                label="Details"
+                id="detail-ticket"
+                type="button"
+                className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border border-@19345E text-lg bg-@EBF2FA text-@19345E font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              />
             </div>
           </table>
         </div>

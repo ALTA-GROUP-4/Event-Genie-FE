@@ -11,7 +11,7 @@ const MyEvent: FC = () => {
       <div className="px-6 py-6 md-to-lg:pb-10 md:pb-16 md:pt-8 md:px-10 lg:pb-20 lg:pt-10 lg:px-20 gap-1 ">
         <div className="flex justify-between">
           <div>
-            <h1 className="px-6 font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
+            <h1 className="px-6 font-bold text-@19345E text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
               My Event
             </h1>
           </div>

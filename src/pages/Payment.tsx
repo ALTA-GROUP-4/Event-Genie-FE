@@ -7,7 +7,7 @@ const Payment: FC = () => {
     <Layout>
       <div className="my-6 px-6 justify-center items-center">
         <div>
-          <h1 className="flex px-6 items-center justify-center font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
+          <h1 className="flex px-6 text-@19345E items-center justify-center font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
             Payment
           </h1>
         </div>
@@ -15,16 +15,12 @@ const Payment: FC = () => {
           <div className="flex flex-row gap-4 md:w-1/2">
             <div className="w-full">
               <label className="font-bold dark:text-white">Name</label>
-              <Input
-                placeholder="Insert Event Name"
-                id="payment_name"
-                type="text"
-              />
+              <Input placeholder="Insert Name" id="payment_name" type="text" />
             </div>
             <div className="w-full">
               <label className="font-bold dark:text-white">Email</label>
               <Input
-                placeholder="Insert Event Name"
+                placeholder="Insert Email"
                 id="payment_email"
                 type="text"
               />
@@ -36,9 +32,8 @@ const Payment: FC = () => {
                 Payment Method
               </label>
               <select
-                placeholder="Insert Event Name"
                 id="payment_method"
-                className="border rounded-lg border-slate-400 text-black p-2 focus:outline-none focus:border-@19345E focus:ring-1 focus:ring-@19345E w-full"
+                className="border bg-slate-100 rounded-lg border-slate-400 text-black p-2 focus:outline-none focus:border-@19345E focus:ring-1 focus:ring-@19345E w-full"
               >
                 <option selected disabled>
                   Select Payment
@@ -59,18 +54,28 @@ const Payment: FC = () => {
             <div className="w-full">
               <p className="font-bold text-lg">Details</p>
               <table className="w-full">
-                <tbody>
+                <thead>
                   <tr className="border-b-2 border-t-2 border-black capitalize">
-                    <td>items</td> <td>price</td> <td>quantity</td>{" "}
-                    <td>total</td>
+                    <td className="px-1 md:px-3 py-1 md:py-2">items</td>{" "}
+                    <td className="px-1 md:px-3 py-1 md:py-2">price</td>{" "}
+                    <td className="px-1 md:px-3 py-1 md:py-2">quantity</td>
+                    <td className="px-1 md:px-3 py-1 md:py-2">total</td>
                   </tr>
+                </thead>
+                <tbody>
                   <tr className=" border-black capitalize">
-                    <td>VIP ticket</td> <td>Rp. 500.000</td> <td>5</td>{" "}
-                    <td>Rp.2.500.000</td>
+                    <td className="px-1 md:px-3 py-1 md:py-2">VIP ticket</td>{" "}
+                    <td className="px-1 md:px-3 py-1 md:py-2">Rp.500.000</td>{" "}
+                    <td className="px-6 md:px-8 py-1 md:py-2">5</td>{" "}
+                    <td className="px-1 md:px-3 py-1 md:py-2">Rp.2.500.000</td>
                   </tr>
-                  <tr className=" border-black capitalize">
-                    <td>regular ticket</td> <td>Rp. 300.000</td> <td>5</td>{" "}
-                    <td>Rp.1.500.000</td>
+                  <tr className=" border-black capitalize w-max-80">
+                    <td className="px-1 md:px-3 py-1 md:py-2">
+                      regular ticket
+                    </td>
+                    <td className="px-1 md:px-3 py-1 md:py-2">Rp.300.000</td>{" "}
+                    <td className="px-6 md:px-8 py-1 md:py-2">5</td>{" "}
+                    <td className="px-1 md:px-3 py-1 md:py-2">Rp.1.500.000</td>
                   </tr>
                   <tr className=" border-black capitalize items-end">
                     <td></td>

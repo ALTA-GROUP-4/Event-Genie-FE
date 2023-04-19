@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { Input, TextArea } from "../components/Input";
 import { Layout } from "../components/Layout";
-import { ButtonSubmit, PrimButton } from "../components/Button";
+import { PrimButton } from "../components/Button";
 const AddEvent: FC = () => {
   return (
     <Layout>
       <div className="my-6 px-6 justify-center items-center">
         <div>
-          <h1 className="flex px-6 items-center justify-center font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
+          <h1 className="flex px-6 text-@19345E items-center justify-center font-bold text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
             Create New Event
           </h1>
         </div>
