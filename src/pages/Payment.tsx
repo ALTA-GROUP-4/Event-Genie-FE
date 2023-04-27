@@ -11,8 +11,8 @@ const Payment: FC = () => {
             Payment
           </h1>
         </div>
-        <div className="flex flex-col my-6 px-6 justify-center items-center">
-          <div className="flex flex-row gap-4 md:w-1/2">
+        <div className="flex flex-col  my-6 px-6 justify-center items-center">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 w-full md:w-1/2">
             <div className="w-full">
               <label className="font-bold dark:text-white">Name</label>
               <Input placeholder="Insert Name" id="payment_name" type="text" />
