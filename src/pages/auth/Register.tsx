@@ -1,10 +1,9 @@
 import { FC, useState, useEffect } from "react";
 import loginImage from "../../assets/login.png";
 import { Layout } from "../../components/Layout";
-import { Contain } from "../../components/Container";
-import { InputEvent } from "../../components/Input";
+import { Input } from "../../components/Input";
 import { PrimButton } from "../../components/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface objRegisType {
   email: string;
@@ -15,45 +14,55 @@ const Register: FC = () => {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div className="flex w-full h-full p-20 justify-center">
-        <div className="w-[32%] h-max flex justify-end items-center">
-          <Contain>
-            <form className="w-full h-full p-6 ">
-              <p className="text-2xl tracking-wider font-semibold mb-5">
-                Sign Up Here
-              </p>
-              <InputEvent id="input-name" placeholder="Name" />
-              <div className="my-2" />
-              <InputEvent id="input-email" placeholder="Email" type="email" />
-              <div className="my-2" />
-              <InputEvent
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 bg-slate-100  dark:bg-slate-800">
+        <div className="flex m-10 lg:m-10 justify-center items-center  dark:bg-slate-800  rounded-2xl">
+          <form className="flex flex-col w-full lg:w-7/12 p-5 items-center shadow-md bg-white dark:bg-@264653 gap-3 rounded-md">
+            <h1 className="font-semibold text-3xl text-back dark:text-white">
+              REGISTER
+            </h1>
+            <div className="w-full">
+              <label className=" dark:text-white">Name</label>
+              <Input
+                placeholder="Insert your name"
+                id="input-name"
+                type="name"
+              />
+            </div>
+            <div className="w-full">
+              <label className=" dark:text-white">Email</label>
+              <Input
+                placeholder="Insert your username"
+                id="input-email"
+                type="email"
+              />
+            </div>
+            <div className="w-full">
+              <label className=" dark:text-white">Password</label>
+              <Input
+                placeholder="Insert your password"
                 id="input-password"
-                placeholder="Password"
                 type="password"
               />
-              <div className="my-10" />
-              <PrimButton
-                label="Register"
-                id=" button-register"
-                type="submit"
-              />
-              <p className="text-slate-900 text-xs mt-6 text-center">
-                Already have an Account ?{" "}
-                <a
-                  className="font-semibold"
-                  id="nav-register"
-                  href="#"
-                  onClick={() => navigate("/login")}
-                >
-                  Login
-                </a>
-              </p>
-            </form>
-          </Contain>
+            </div>
+            <PrimButton label="Register" id=" button-register" type="submit" />
+            <p className="text-black dark:text-white">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="font-bold text-black dark:text-@2A9D8F"
+                id="nav-register "
+              >
+                Login
+              </Link>
+            </p>
+          </form>
         </div>
-        <div className="w-[55%]">
-          <img src={loginImage} alt="image-login" />
-        </div>
+
+        <img
+          src={loginImage}
+          alt="image-login"
+          className="w-full h-auto hidden md:block"
+        />
       </div>
     </Layout>
   );

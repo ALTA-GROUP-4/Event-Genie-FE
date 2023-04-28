@@ -2,6 +2,7 @@ import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { PrimButton, SecButton } from "./Button";
 import { useNavigate } from "react-router-dom";
+import { BsFillPlusSquareFill, BsDashSquareFill } from "react-icons/bs";
 
 interface PropsHandling {
   event_name: string;
@@ -169,5 +170,55 @@ export const CardMyTicket: FC<PropsMyTickets> = (props) => {
       </div>
     </div>
     //   {/* card end*/}
+  );
+};
+
+interface DataComment {
+  image: string;
+  name: string;
+  comment: string;
+}
+
+export const CardComment: FC<Partial<DataComment>> = (props) => {
+  const { image, name, comment } = props;
+  return (
+    <div className="flex">
+      <div className="bg-white rounded-2xl py-2 md:w-24 px-3">
+        <div className=" flex justify-center items-center pt-2">
+          <img
+            src={image}
+            alt="image-card"
+            className="rounded-full hidden md:block border-2 drop-shadow-lg border-black "
+          />
+        </div>
+      </div>
+      <div className="p-5 bg-slate-200 rounded-large">
+        <h1 className="text-black font-semibold text:xl md:text-2xl ">
+          {name}
+        </h1>
+        <h1>{comment} </h1>
+      </div>
+    </div>
+  );
+};
+
+interface DataTicket {
+  category: string;
+  price: string;
+  quota: string;
+}
+
+export const CardTicket: FC<Partial<DataTicket>> = (props) => {
+  const { category, price, quota } = props;
+  return (
+    <div className="flex flex-col w-40 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
+      <h1 className="font-bold text-2xl ">{category}</h1>
+      <h1 className="text-2xl">{price}</h1>
+      <div className="flex flex-row mb-3 text-2xl gap-4 justify-center items-center">
+        <BsDashSquareFill className="text-@19345E hover:scale-125" />
+        <h1>{quota}</h1>
+        <BsFillPlusSquareFill className="text-@19345E hover:scale-125" />
+      </div>
+    </div>
   );
 };
