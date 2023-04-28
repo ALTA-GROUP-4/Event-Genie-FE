@@ -10,7 +10,6 @@ import Register from "../pages/auth/Register";
 import ProfileUser from "../pages/ProfileUser";
 import MyEvent from "../pages/MyEvent";
 import DetailEvent from "../pages/DetailEvent";
-import UpdateProfile from "../pages/UpdateProfile";
 import Payment from "../pages/Payment";
 import AddEvent from "../pages/AddEvent";
 import UpdateEvent from "../pages/UpdateEvent";
@@ -49,10 +48,6 @@ const Routes = () => {
     {
       path: "/update-event",
       element: <UpdateEvent />,
-    },
-    {
-      path: "/update-users",
-      element: <UpdateProfile />,
     },
     {
       path: "/payment",
