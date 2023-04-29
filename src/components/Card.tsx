@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { PrimButton, SecButton } from "./Button";
 import { useNavigate } from "react-router-dom";
@@ -210,14 +210,29 @@ interface DataTicket {
 
 export const CardTicket: FC<Partial<DataTicket>> = (props) => {
   const { category, price, quota } = props;
+  const [num, setNum] = useState(0);
   return (
     <div className="flex flex-col w-40 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
       <h1 className="font-bold text-2xl ">{category}</h1>
       <h1 className="text-2xl">{price}</h1>
       <div className="flex flex-row mb-3 text-2xl gap-4 justify-center items-center">
-        <BsDashSquareFill className="text-@19345E hover:scale-125" />
-        <h1>{quota}</h1>
-        <BsFillPlusSquareFill className="text-@19345E hover:scale-125" />
+        <BsDashSquareFill
+          className="text-@19345E hover:scale-125 cursor-pointer"
+          onClick={() => {
+            if (num > 0) {
+              setNum(num - 1);
+            }
+          }}
+        />
+        <h1>{num}</h1>
+        <BsFillPlusSquareFill
+          className="text-@19345E hover:scale-125 cursor-pointer"
+          onClick={() => {
+            if (num < 5) {
+              setNum(num + 1);
+            }
+          }}
+        />
       </div>
     </div>
   );

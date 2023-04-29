@@ -49,7 +49,7 @@ export const Navbar: FC = () => {
             type="button"
             className=" hs-dropdown-toggle [--placement:top-left] inline-flex justify-center items-center gap-2 rounded-md text-sm bg-transparent text-white shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
           >
-            <img src="./users.png" alt="" className="w-10" />
+            <img src="/users.png" alt="" className="w-10" />
             <svg
               className="hs-dropdown-open:rotate-180 w-2.5 h-2.5 text-gray-600"
               width="16"
@@ -110,7 +110,7 @@ export const Navbar: FC = () => {
       >
         <div className="flex items-center justify-between">
           <Link to="/">
-            <img src="./Logo1.png" alt="" />
+            <img src="/Logo1.png" alt="" />
           </Link>
 
           <div className="sm:hidden">
