@@ -41,7 +41,7 @@ const Routes: FC = () => {
       element: <MyEvent />,
     },
     {
-      path: "/detail-event",
+      path: "/detail-event/:name",
       element: <DetailEvent />,
     },
     {
