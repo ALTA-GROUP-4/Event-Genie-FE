@@ -1,9 +1,9 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
-import { FC } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { FC, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+
 import Home from "../pages/index";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
@@ -15,7 +15,10 @@ import AddEvent from "../pages/AddEvent";
 import UpdateEvent from "../pages/UpdateEvent";
 import MyTicket from "../pages/MyTicket";
 
-const Routes = () => {
+axios.defaults.baseURL =
+  "https://virtserver.swaggerhub.com/MUJAHID170997/EventGenieAPI/1.0.0";
+
+const Routes: FC = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -58,6 +61,7 @@ const Routes = () => {
       element: <MyTicket />,
     },
   ]);
+
   return <RouterProvider router={router} />;
 };
 
