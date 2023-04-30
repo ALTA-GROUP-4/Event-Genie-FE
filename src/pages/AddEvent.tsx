@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const AddEvent: FC = () => {
   const [eventSubmit, setEventSubmit] = useState<AddDataEvent>({
     event_image: "",
-    even_name: "",
+    event_name: "",
     hostedby: "",
     event_date: "",
     place: "",
@@ -165,7 +165,7 @@ const AddEvent: FC = () => {
                   onChange={(event) =>
                     setEventSubmit({
                       ...eventSubmit,
-                      even_name: event.target.value,
+                      event_name: event.target.value,
                     })
                   }
                 />

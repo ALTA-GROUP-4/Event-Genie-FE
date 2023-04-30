@@ -36,7 +36,7 @@ export interface EventDataType {
 
 export interface AddDataEvent {
   event_image: any;
-  even_name: string;
+  event_name: string;
   hostedby: string;
   event_date: string;
   place: string;
