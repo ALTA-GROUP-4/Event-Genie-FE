@@ -50,7 +50,7 @@ const Routes: FC = () => {
       element: <AddEvent />,
     },
     {
-      path: "/update-event",
+      path: "/update-event/:name",
       element: <UpdateEvent />,
     },
     {

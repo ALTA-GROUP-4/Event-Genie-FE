@@ -4,7 +4,7 @@ import { CardMyEvent } from "../components/Card";
 import { PrimButton } from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { EventDataType } from "../utils/user";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 const MyEvent: FC = () => {
@@ -13,60 +13,13 @@ const MyEvent: FC = () => {
   const email = "users";
   const navigate = useNavigate();
 
-  const [visibleItems, setVisibleItems] = useState<EventDataType[]>([]);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
-
   document.title = `My Event | Event Genie`;
 
   useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      let newItemsPerPage = 8;
-
-      switch (true) {
-        case screenWidth <= 480:
-          newItemsPerPage = 4;
-          break;
-        case screenWidth <= 768:
-          newItemsPerPage = 6;
-          break;
-        case screenWidth <= 1024:
-          newItemsPerPage = 8;
-          break;
-        default:
-          newItemsPerPage = 12;
-          break;
-      }
-
-      setItemsPerPage(newItemsPerPage);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
+    facthDataEvent();
   }, []);
 
-  useEffect(() => {
-    // Calculate the total number of pages based on the number of items and items per page
-    setTotalPages(Math.ceil(datas.length / itemsPerPage));
-  }, [datas, itemsPerPage]);
-
-  useEffect(() => {
-    // Calculate the start and end indices of the items to be displayed on the current page
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    setVisibleItems(datas.slice(startIndex, endIndex));
-  }, [datas, itemsPerPage, currentPage]);
-
-  useEffect(() => {
-    fetchDataListMyBook();
-  }, []);
-
-  const fetchDataListMyBook = () => {
+  const facthDataEvent = () => {
     axios
       .get(`events`)
       .then((response) => {
@@ -74,7 +27,7 @@ const MyEvent: FC = () => {
         setDatas(data);
       })
       .catch((error) => {
-        const { message } = error.message;
+        alert(error.toString());
       })
       .finally(() => {
         setLoading(false);
@@ -110,7 +63,7 @@ const MyEvent: FC = () => {
                 event_date={e.date}
                 host_by={e.hostedby}
                 place={e.place}
-                edit="/update-event"
+                edit={`/update-event/${e.name}`}
                 del={`onClick={() => handleDeleteAccount()}`}
               />
             );

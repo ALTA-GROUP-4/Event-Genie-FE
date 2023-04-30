@@ -33,6 +33,23 @@ export interface EventDataType {
   description: string;
   user_id: number;
 }
+
+export interface AddDataEvent {
+  event_image: any;
+  even_name: string;
+  hostedby: string;
+  event_date: string;
+  place: string;
+  description: string;
+  ticket: string;
+  price: number;
+  qouta: number;
+}
+
+export interface UpdateDataEvent extends AddDataEvent {
+  id: number;
+}
+
 export interface UserComment extends EventDataType {
   avatar: any;
   content: string;
