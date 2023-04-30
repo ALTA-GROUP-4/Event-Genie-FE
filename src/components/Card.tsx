@@ -1,5 +1,8 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { Comments } from "./Input";
 import { PrimButton, SecButton } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { BsFillPlusSquareFill, BsDashSquareFill } from "react-icons/bs";
@@ -11,14 +14,6 @@ interface PropsHandling {
   MyLink: string;
 }
 
-interface PropsMyEvent {
-  event_image: string;
-  event_name: string;
-  event_date: string;
-  host_by: string;
-  place: string;
-  MyLink: string;
-}
 interface PropsMyTickets {
   event_image: string;
   event_name: string;
@@ -54,9 +49,72 @@ export const CardLanding: FC<PropsHandling> = (props) => {
     //   {/* card end*/}
   );
 };
+
+interface PropsMyEvent {
+  event_image: string;
+  event_name: string;
+  event_date: string;
+  host_by: string;
+  place: string;
+  MyLink: string;
+  edit: string;
+  del: string;
+}
+
 export const CardMyEvent: FC<PropsMyEvent> = (props) => {
-  const { event_name, event_image, MyLink, event_date, host_by, place } = props;
+  const {
+    event_name,
+    edit,
+    del,
+    event_image,
+    MyLink,
+    event_date,
+    host_by,
+    place,
+  } = props;
   const navigate = useNavigate();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  function handleDelete() {
+    Swal.fire({
+      title: "DELETE",
+      text: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`events/eventID`, {
+            headers: {
+              Authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+            },
+          })
+          .then((response) => {
+            const { message } = response.data;
+            Swal.fire({
+              title: "Success",
+              text: message,
+              showCancelButton: false,
+            });
+          })
+          .catch((error) => {
+            const { data } = error.response;
+            Swal.fire({
+              icon: "error",
+              title: "Failed",
+              text: data.message,
+              showCancelButton: false,
+            });
+          });
+      }
+    });
+    if (isDeleted) {
+      return null;
+    }
+  }
+
   return (
     //   {/* card start*/}
     <div className="hover:drop-shadow-lg hover:scale-105 duration-300  bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700">
@@ -73,20 +131,21 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               <Link to={MyLink}>
                 {" "}
-                <tr className="border-b-4">
+                <tr className="border-0">
                   <td className=" text-@19345E text-md md:text-xl  xl:text-3xl dark:text-gray-200">
                     {event_name}
                   </td>
                 </tr>{" "}
               </Link>
-              <tr className="border-b-4">
+              <tr className="border-0">
                 <td className="whitespace-nowrap text-md md:text-lg text-slate-400 dark:text-gray-200">
                   {event_date}
                 </td>
               </tr>
-              <tr className="border-b-4">
-                <td className="whitespace-nowrap text-md md:text-lg text-slate-400 dark:text-gray-200">
-                  Hosted by : {host_by}, {place}
+              <tr className="border-0">
+                <td className="flex flex-col gap-2 md:flex-row whitespace-nowrap text-md md:text-lg text-slate-400 dark:text-gray-200">
+                  <p className="capitalize ">Hosted by : {host_by}, </p>
+                  <p> {place}</p>
                 </td>
               </tr>
             </tbody>
@@ -96,15 +155,15 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
                 id=" button-edit-event"
                 type="button"
                 className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                onClick={() => navigate("/update-event")}
+                onClick={() => navigate(`${edit}`)}
               />
               <SecButton
                 label="Delete"
                 id=" button-delete-event"
                 type="button"
                 className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border border-@19345E text-lg bg-@EBF2FA text-@19345E font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                onClick={handleDelete}
               />
-
               <PrimButton
                 label="Open"
                 id=" button-edit-event"
@@ -197,6 +256,25 @@ export const CardComment: FC<Partial<DataComment>> = (props) => {
           {name}
         </h1>
         <h1>{comment} </h1>
+      </div>
+    </div>
+  );
+};
+interface DataUSerComment {
+  image: string;
+  name: string;
+}
+
+export const CardUSerComment: FC<Partial<DataUSerComment>> = (props) => {
+  const { image, name } = props;
+  return (
+    <div className="flex flex-row px-6 my-6 ">
+      <div className="flex flex-col pr-4 justify-center items-center">
+        <img src={image} alt="" className="hidden md:block " />
+        <p className="font-semibold">{name}</p>
+      </div>
+      <div className="w-full mt-2">
+        <Comments placeholder="Add a comment...." id="comments" />
       </div>
     </div>
   );
