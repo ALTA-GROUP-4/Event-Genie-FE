@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
+import Test from "../pages/test";
 import Home from "../pages/index";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
@@ -59,6 +60,10 @@ const Routes: FC = () => {
     {
       path: "/my-ticket",
       element: <MyTicket />,
+    },
+    {
+      path: "/test",
+      element: <Test />,
     },
   ]);
 

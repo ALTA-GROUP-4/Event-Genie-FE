@@ -6,16 +6,16 @@ import axios from "axios";
 
 import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
-import { EventDataType, UserComment } from "../utils/user";
+import { EventDataType, UserComment, UserEdit } from "../utils/user";
 import { Layout } from "../components/Layout";
-import { PrimButton } from "../components/Button";
-import { Comments } from "../components/Input";
-import { CardComment, CardTicket } from "../components/Card";
+import { PrimButton, SecButton } from "../components/Button";
+import { CardComment, CardUSerComment, CardTicket } from "../components/Card";
 
 const DetailEvent: FC = () => {
   const [userId, setUserId] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<Partial<EventDataType>>({});
+  const [datas, setDatas] = useState<UserEdit[]>([]);
   const [ticket, setTicket] = useState<EventDataType[]>([]);
   const [comment, setComment] = useState<UserComment[]>([]);
   const [cookie] = useCookies(["token", "email"]);
@@ -76,7 +76,7 @@ const DetailEvent: FC = () => {
 
   const fetchComment = () => {
     axios
-      .get("/events")
+      .get(`events/eventsID`)
       .then((response) => {
         const { comment } = response.data;
         setComment(comment);
@@ -120,37 +120,75 @@ const DetailEvent: FC = () => {
             {data.description}
           </p>
         </div>
-        <div className="flex justify-between">
+        {/* {checkToken ? (
           <div>
-            <h1 className="px-6 font-bold text-@19345E text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
-              Coments
-            </h1>
+            <div className="flex justify-between">
+              <div>
+                <h1 className="px-6 font-bold text-@19345E text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
+                  Coments
+                </h1>
+              </div>
+              <div>
+                {checkEmail !== user_id && checkToken ? (
+                  <></>
+                ) : (
+                  <PrimButton
+                    label="Join"
+                    id=" button-join"
+                    type="button"
+                    data-hs-overlay="#hs-medium-modal"
+                  />
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row px-6 my-6 ">
+              <div className="">
+                <img src="/users.png" alt="" className="hidden md:block pr-4" />
+              </div>
+              <div className="w-full mt-2">
+                <Comments placeholder="Add a comment...." id="comments" />
+              </div>
+            </div>
           </div>
-          <div>
-            {checkEmail !== user_id && checkToken ? (
-              <PrimButton
-                label="Join"
-                id=" button-join"
-                type="button"
-                data-hs-overlay="#hs-medium-modal"
-              />
-            ) : (
-              <></>
-            )}
+        ) : (
+          <></>
+        )} */}
+
+        <div>
+          <div className="flex justify-between">
+            <div>
+              <h1 className="px-6 font-bold text-@19345E text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
+                Coments
+              </h1>
+            </div>
+            <div>
+              {checkEmail !== user_id && checkToken ? (
+                <></>
+              ) : (
+                <PrimButton
+                  label="Join"
+                  id=" button-join"
+                  type="button"
+                  data-hs-overlay="#hs-medium-modal"
+                />
+              )}
+            </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row px-6 my-6 ">
-          <div className="">
-            <img src="/users.png" alt="" className="hidden md:block pr-4" />
-          </div>
-          <div className="w-full mt-2">
-            <Comments placeholder="Add a comment...." id="comments" />
-          </div>
+        <div>
+          {/* {loading ? (
+            <Loading />
+          ) : (
+            datas.map((user) => {
+              return <CardUSerComment image="/users.png" name={user.name} />;
+            })
+          )} */}
+          <CardUSerComment image="/users.png" name="Jack" />
         </div>
         <div className="p-3">
           {loading ? (
             <Loading />
-          ) : comment && comment.length > 0 ? (
+          ) : comment && comment.length ? (
             comment.map((com) => {
               return (
                 <CardComment
@@ -161,15 +199,10 @@ const DetailEvent: FC = () => {
               );
             })
           ) : (
-            <p>No comments yet.</p>
+            <div className="flex justify-center items-center">
+              <p className="font-semibold ">No comments yet.</p>
+            </div>
           )}
-          {/* <CardComment
-            image="/users.png"
-            name="Jack"
-            comment="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-       "
-          /> */}
         </div>
 
         <div
