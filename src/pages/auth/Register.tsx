@@ -1,11 +1,11 @@
 import { FC, useState, useEffect, FormEvent } from "react";
-import { ObjSubmitTypeRegister } from "../../utils/user";
+import { ObjSubmitTypeRegister } from "@/utils/user";
 import { Link, useNavigate } from "react-router-dom";
-import { PrimButton } from "../../components/Button";
-import { Layout } from "../../components/Layout";
-import { Input } from "../../components/Input";
+import { PrimButton } from "@/components/Button";
+import { Layout } from "@/components/Layout";
+import { Input } from "@/components/Input";
 
-import loginImage from "../../assets/login.png";
+import loginImage from "@/assets/login.png";
 import Swal from "sweetalert2";
 import axios from "axios";
 

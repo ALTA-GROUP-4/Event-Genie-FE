@@ -3,10 +3,10 @@ import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import { PrimButton, SecButton } from "../components/Button";
-import { Layout } from "../components/Layout";
-import { Input } from "../components/Input";
-import { UserEdit } from "../utils/user";
+import { PrimButton, SecButton } from "@/components/Button";
+import { Layout } from "@/components/Layout";
+import { Input } from "@/components/Input";
+import { UserEdit } from "@/utils/user";
 
 const ProfileUser: FC = () => {
   const [objSubmit, setObjSubmit] = useState<Partial<UserEdit>>({});

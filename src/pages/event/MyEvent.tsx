@@ -1,9 +1,9 @@
 import { FC, useState, useEffect } from "react";
-import { Layout } from "../components/Layout";
-import { CardMyEvent } from "../components/Card";
-import { PrimButton } from "../components/Button";
+import { Layout } from "@/components/Layout";
+import { CardMyEvent } from "@/components/Card";
+import { PrimButton } from "@/components/Button";
 import { useNavigate } from "react-router-dom";
-import { EventDataType } from "../utils/user";
+import { EventDataType } from "@/utils/user";
 import Swal from "sweetalert2";
 import axios from "axios";
 

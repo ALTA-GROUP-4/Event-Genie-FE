@@ -21,16 +21,17 @@ export interface EventType {
 
 export interface EventDataType {
   id: number;
+  event_image: any;
   name: string;
-  date: string;
   hostedby: string;
+  date: string;
   place: string;
+  description: string;
   typeofticket: boolean;
+  ticket: string;
   price: string;
   goalquota: number;
   currentqouta: string;
-  event_image: any;
-  description: string;
   user_id: number;
 }
 
@@ -46,7 +47,7 @@ export interface AddDataEvent {
   qouta: number;
 }
 
-export interface UpdateDataEvent extends AddDataEvent {
+export interface UpdateDataEvent extends EventDataType {
   id: number;
 }
 

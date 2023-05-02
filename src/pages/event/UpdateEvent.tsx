@@ -5,17 +5,35 @@ import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import { Input, TextArea } from "../components/Input";
-import { PrimButton } from "../components/Button";
-import { Layout } from "../components/Layout";
-import { AddDataEvent, UpdateDataEvent, EventDataType } from "../utils/user";
+import { Input, TextArea } from "@/components/Input";
+import { PrimButton } from "@/components/Button";
+import { Layout } from "@/components/Layout";
+import { AddDataEvent, UpdateDataEvent, EventDataType } from "@/utils/user";
 
 const UpdateEvent: FC = () => {
   const [eventSubmit, setEventSubmit] = useState<Partial<UpdateDataEvent>>({});
+  const [data, setData] = useState<Partial<UpdateDataEvent>>({});
+  const [ticketList, setTicketList] = useState([]);
   const navigate = useNavigate();
 
   document.title = "Update Event | Event Genie";
 
+  useEffect(() => {
+    fetchDetailEvent();
+  }, []);
+
+  function fetchDetailEvent() {
+    axios
+      .get(`events/eventsID`)
+      .then((response) => {
+        const { data } = response.data;
+        setEventSubmit(data);
+      })
+      .catch((error) => {
+        alert(error.toString());
+      });
+  }
+  console.log(data);
   function handleChange(value: any, key: keyof typeof eventSubmit) {
     let temp = { ...eventSubmit };
     temp[key] = value;
@@ -111,13 +129,17 @@ const UpdateEvent: FC = () => {
                 />
               </label>
             </div>
-            <div className="flex flex-col lg:flex-row p-2 gap-2">
+            <form className="flex flex-col lg:flex-row p-2 gap-2">
               <div className="w-80 lg:w-40">
                 <label className="font-bold dark:text-white">Ticket</label>
                 <Input
                   placeholder="Insert Ticket Name"
                   id="ticket_name"
                   type="text"
+                  defaultValue={eventSubmit.ticket}
+                  onChange={(event) =>
+                    handleChange(event.target.value, "ticket")
+                  }
                 />
               </div>
               <div className="w-80 lg:w-40">
@@ -126,6 +148,10 @@ const UpdateEvent: FC = () => {
                   placeholder="Insert Ticket Price"
                   id="ticket_price"
                   type="text"
+                  defaultValue={eventSubmit.price}
+                  onChange={(event) =>
+                    handleChange(event.target.value, "price")
+                  }
                 />
               </div>
               <div className="w-80 lg:w-40">
@@ -134,9 +160,13 @@ const UpdateEvent: FC = () => {
                   placeholder="Insert Ticket Capacity"
                   id="ticket_quota"
                   type="text"
+                  defaultValue={eventSubmit.goalquota}
+                  onChange={(event) =>
+                    handleChange(event.target.value, "goalquota")
+                  }
                 />
               </div>
-            </div>
+            </form>
             <div className="p-2">
               <PrimButton
                 label="Add Ticket"
@@ -154,10 +184,8 @@ const UpdateEvent: FC = () => {
                 placeholder="Insert Event Name"
                 id="event_name"
                 type="text"
-                defaultValue={eventSubmit.event_name}
-                onChange={(event) =>
-                  handleChange(event.target.value, "event_name")
-                }
+                defaultValue={eventSubmit.name}
+                onChange={(event) => handleChange(event.target.value, "name")}
               />
             </div>
             <div className="w-80">
@@ -178,10 +206,8 @@ const UpdateEvent: FC = () => {
                 placeholder="Insert Event Name"
                 id="event_date"
                 type="date"
-                defaultValue={eventSubmit.event_date}
-                onChange={(event) =>
-                  handleChange(event.target.value, "event_date")
-                }
+                defaultValue={eventSubmit.date}
+                onChange={(event) => handleChange(event.target.value, "date")}
               />
             </div>
             <div className="">
