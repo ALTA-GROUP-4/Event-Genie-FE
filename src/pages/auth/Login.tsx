@@ -4,11 +4,11 @@ import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import { PrimButton } from "../../components/Button";
-import { ObjSubmitType } from "../../utils/user";
-import loginImage from "../../assets/login.png";
-import { Layout } from "../../components/Layout";
-import { Input } from "../../components/Input";
+import { PrimButton } from "@/components/Button";
+import { ObjSubmitType } from "@/utils/user";
+import loginImage from "@/assets/login.png";
+import { Layout } from "@/components/Layout";
+import { Input } from "@/components/Input";
 
 const Login: FC = () => {
   const [objSubmit, setObjSubmit] = useState<ObjSubmitType>({

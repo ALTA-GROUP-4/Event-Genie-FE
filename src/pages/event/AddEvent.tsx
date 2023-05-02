@@ -2,10 +2,10 @@ import { FC, useState, useEffect, FormEvent } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import { Input, TextArea } from "../components/Input";
-import { Layout } from "../components/Layout";
-import { PrimButton } from "../components/Button";
-import { AddDataEvent } from "../utils/user";
+import { Input, TextArea } from "@/components/Input";
+import { Layout } from "@/components/Layout";
+import { PrimButton } from "@/components/Button";
+import { AddDataEvent } from "@/utils/user";
 import { useNavigate } from "react-router-dom";
 
 const AddEvent: FC = () => {

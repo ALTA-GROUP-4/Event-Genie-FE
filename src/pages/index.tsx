@@ -3,10 +3,10 @@ import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import Loading from "../components/Loading";
-import { Layout } from "../components/Layout";
-import { CardLanding } from "../components/Card";
-import { EventType } from "../utils/user";
+import Loading from "@/components/Loading";
+import { Layout } from "@/components/Layout";
+import { CardLanding } from "@/components/Card";
+import { EventType } from "@/utils/user";
 
 interface DataType {
   id: number;

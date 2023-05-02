@@ -4,12 +4,12 @@ import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import Loading from "../components/Loading";
+import Loading from "@/components/Loading";
 import { useParams } from "react-router-dom";
-import { EventDataType, UserComment, UserEdit } from "../utils/user";
-import { Layout } from "../components/Layout";
-import { PrimButton, SecButton } from "../components/Button";
-import { CardComment, CardUSerComment, CardTicket } from "../components/Card";
+import { EventDataType, UserComment, UserEdit } from "@/utils/user";
+import { Layout } from "@/components/Layout";
+import { PrimButton, SecButton } from "@/components/Button";
+import { CardComment, CardUSerComment, CardTicket } from "@/components/Card";
 
 const DetailEvent: FC = () => {
   const [userId, setUserId] = useState<boolean>(false);

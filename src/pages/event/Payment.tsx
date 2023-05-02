@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Layout } from "../components/Layout";
-import { Input } from "../components/Input";
-import { PrimButton, SecButton } from "../components/Button";
+import { Layout } from "@/components/Layout";
+import { Input } from "@/components/Input";
+import { PrimButton, SecButton } from "@/components/Button";
 const Payment: FC = () => {
   return (
     <Layout>

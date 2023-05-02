@@ -4,17 +4,17 @@ import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
-import Test from "../pages/test";
-import Home from "../pages/index";
-import Login from "../pages/auth/Login";
-import Register from "../pages/auth/Register";
-import ProfileUser from "../pages/ProfileUser";
-import MyEvent from "../pages/MyEvent";
-import DetailEvent from "../pages/DetailEvent";
-import Payment from "../pages/Payment";
-import AddEvent from "../pages/AddEvent";
-import UpdateEvent from "../pages/UpdateEvent";
-import MyTicket from "../pages/MyTicket";
+import Test from "@/pages/test";
+import Home from "@/pages/index";
+import Login from "@/pages/auth/Login";
+import Register from "@/pages/auth/Register";
+import ProfileUser from "@/pages/ProfileUser";
+import MyEvent from "@/pages/event/MyEvent";
+import DetailEvent from "@/pages/event/DetailEvent";
+import Payment from "@/pages/event/Payment";
+import AddEvent from "@/pages/event/AddEvent";
+import UpdateEvent from "@/pages/event/UpdateEvent";
+import MyTicket from "@/pages/event/MyTicket";
 
 axios.defaults.baseURL =
   "https://virtserver.swaggerhub.com/MUJAHID170997/EventGenieAPI/1.0.0";
