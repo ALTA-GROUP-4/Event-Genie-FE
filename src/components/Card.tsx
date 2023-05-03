@@ -11,6 +11,7 @@ interface PropsHandling {
   event_name: string;
   event_image: string;
   event_date: string;
+  host_by: string;
   MyLink: string;
 }
 
@@ -23,7 +24,7 @@ interface PropsMyTickets {
 }
 
 export const CardLanding: FC<PropsHandling> = (props) => {
-  const { event_name, event_image, MyLink, event_date } = props;
+  const { event_name, event_image, MyLink, host_by, event_date } = props;
   return (
     //   {/* card start*/}
     <div className="drop-shadow hover:drop-shadow-lg hover:scale-105 duration-300 flex flex-col bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
@@ -36,12 +37,14 @@ export const CardLanding: FC<PropsHandling> = (props) => {
       </Link>
       <div className="p-4 md:p-5">
         <Link to={MyLink}>
-          <h3 className="hover:text-@19345E text-md font-bold text-black dark:text-white  ">
+          <h3 className="hover:text-@19345E text-2xl font-bold text-black dark:text-white  ">
             {event_name}
           </h3>
         </Link>
-
-        <h3 className="text-md font-semibold text-slate-400 hover:text-slate-600 pt-2 dark:text-white ">
+        <h3 className="capitalize text-sm font-semibold text-slate-400 hover:text-slate-600  dark:text-white ">
+          host by {host_by}
+        </h3>
+        <h3 className="text-sm font-semibold text-slate-400 hover:text-slate-600  dark:text-white ">
           {event_date}
         </h3>
       </div>

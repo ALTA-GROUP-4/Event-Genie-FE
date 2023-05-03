@@ -6,19 +6,21 @@ import axios from "axios";
 
 import { PrimButton } from "@/components/Button";
 import { ObjSubmitType } from "@/utils/user";
-import loginImage from "@/assets/login.png";
 import { Layout } from "@/components/Layout";
 import { Input } from "@/components/Input";
+
+import loginImage from "@/assets/login.png";
 
 const Login: FC = () => {
   const [objSubmit, setObjSubmit] = useState<ObjSubmitType>({
     email: "",
     password: "",
   });
-  const [, setCookie] = useCookies(["token", "email"]);
+  const [, setCookie] = useCookies();
   const [isDisabled, setIsDisabled] = useState(true);
-  document.title = `Login | Event Genie`;
   const navigate = useNavigate();
+
+  document.title = `Login | Event Genie`;
 
   useEffect(() => {
     const isEmpty = Object.values(objSubmit).every((val) => {
@@ -34,6 +36,7 @@ const Login: FC = () => {
       .post("login", objSubmit)
       .then((response) => {
         const { data, message } = response.data;
+        setCookie("token", data.token);
         Swal.fire({
           icon: "success",
           title: "Success",

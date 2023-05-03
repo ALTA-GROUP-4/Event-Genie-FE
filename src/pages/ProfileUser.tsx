@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -11,8 +12,8 @@ import { UserEdit } from "@/utils/user";
 const ProfileUser: FC = () => {
   const [objSubmit, setObjSubmit] = useState<Partial<UserEdit>>({});
   const [data, setData] = useState<Partial<UserEdit>>({});
-  const [cookie] = useCookies(["token", "email"]);
-  let token = cookie.token;
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
 
   useEffect(() => {
     fetchData();
@@ -20,7 +21,7 @@ const ProfileUser: FC = () => {
 
   function fetchData() {
     axios
-      .get(`users`)
+      .get(`/users`)
       .then((response) => {
         const { data } = response.data;
         document.title = `${data.name} | Event Genie`;

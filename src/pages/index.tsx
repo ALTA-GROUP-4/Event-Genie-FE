@@ -30,7 +30,7 @@ const Home: FC = () => {
 
   const fetchAllEvent = () => {
     axios
-      .get("/events")
+      .get(`events`)
       .then((response) => {
         const { data } = response.data;
         setDatas(data);
@@ -57,9 +57,11 @@ const Home: FC = () => {
             datas.map((event) => {
               return (
                 <CardLanding
+                  key={event.id}
                   event_image="./bg.jpg"
                   MyLink={`/detail-event/${event.name}`}
                   event_name={event.name}
+                  host_by={event.hostedby}
                   event_date={event.date}
                 />
               );
