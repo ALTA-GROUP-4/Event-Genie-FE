@@ -67,6 +67,70 @@ const Home: FC = () => {
               );
             })
           )}
+          {loading ? (
+            <Loading />
+          ) : (
+            datas.map((event) => {
+              return (
+                <CardLanding
+                  key={event.id}
+                  event_image="./bg.jpg"
+                  MyLink={`/detail-event/${event.name}`}
+                  event_name={event.name}
+                  host_by={event.hostedby}
+                  event_date={event.date}
+                />
+              );
+            })
+          )}
+          {loading ? (
+            <Loading />
+          ) : (
+            datas.map((event) => {
+              return (
+                <CardLanding
+                  key={event.id}
+                  event_image="./bg.jpg"
+                  MyLink={`/detail-event/${event.name}`}
+                  event_name={event.name}
+                  host_by={event.hostedby}
+                  event_date={event.date}
+                />
+              );
+            })
+          )}
+          {loading ? (
+            <Loading />
+          ) : (
+            datas.map((event) => {
+              return (
+                <CardLanding
+                  key={event.id}
+                  event_image="./bg.jpg"
+                  MyLink={`/detail-event/${event.name}`}
+                  event_name={event.name}
+                  host_by={event.hostedby}
+                  event_date={event.date}
+                />
+              );
+            })
+          )}
+          {loading ? (
+            <Loading />
+          ) : (
+            datas.map((event) => {
+              return (
+                <CardLanding
+                  key={event.id}
+                  event_image="./bg.jpg"
+                  MyLink={`/detail-event/${event.name}`}
+                  event_name={event.name}
+                  host_by={event.hostedby}
+                  event_date={event.date}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     </Layout>

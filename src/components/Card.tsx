@@ -15,14 +15,6 @@ interface PropsHandling {
   MyLink: string;
 }
 
-interface PropsMyTickets {
-  event_image: string;
-  event_name: string;
-  event_date: string;
-  host_by: string;
-  place: string;
-}
-
 export const CardLanding: FC<PropsHandling> = (props) => {
   const { event_name, event_image, MyLink, host_by, event_date } = props;
   return (
@@ -182,6 +174,14 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
   );
 };
 
+interface PropsMyTickets {
+  event_image: string;
+  event_name: string;
+  event_date: string;
+  host_by: string;
+  place: string;
+}
+
 export const CardMyTicket: FC<PropsMyTickets> = (props) => {
   const { event_name, event_image, event_date, host_by, place } = props;
   return (
@@ -215,16 +215,18 @@ export const CardMyTicket: FC<PropsMyTickets> = (props) => {
             </tbody>
             <div className="flex flex-row md:w-96">
               <PrimButton
-                label="Print as PDF"
-                id="print-to-pdf"
+                label="Ticket"
+                id="button-ticket"
                 type="button"
                 className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border text-lg bg-@19345E text-@EBF2FA font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                data-hs-overlay="#hs-medium-modal"
               />
               <SecButton
-                label="Details"
+                label="Invoice"
                 id="detail-ticket"
                 type="button"
                 className="py-2 px-4 m-2 w-full justify-center items-center gap-2 rounded-md border border-@19345E text-lg bg-@EBF2FA text-@19345E font-bold shadow-sm align-middle hover:scale-105 focus:outline-none   transition-all text-md dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                data-hs-overlay="#hs-large-modal"
               />
             </div>
           </table>
@@ -232,6 +234,80 @@ export const CardMyTicket: FC<PropsMyTickets> = (props) => {
       </div>
     </div>
     //   {/* card end*/}
+  );
+};
+
+interface PropsTickets {
+  name: string;
+  hostedby: string;
+  date: string;
+  place: string;
+  tot_ticket: number;
+  ticket_type: string;
+  ticket_id: string;
+}
+
+export const CardTicketEvent: FC<PropsTickets> = (props) => {
+  const { name, hostedby, date, place, tot_ticket, ticket_type, ticket_id } =
+    props;
+  return (
+    //   {/* card start*/}
+    <div className="flex flex-col w-60 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
+      <div className="m-4">
+        <img src="/Logo2.png" alt="" className="w-28" />
+      </div>
+      <div className="flex flex-col justify-center items-center dark:bg-@264653 m-2 ">
+        <h1 className="font-semibold text-lg mb-2">{name}</h1>
+        <div>
+          <h1>Hosted by {hostedby}</h1>
+          <h1>Date : {date}</h1>
+          <h1>Place: {place}</h1>
+          <h1>Valid for : {tot_ticket} People</h1>
+        </div>
+      </div>
+      <div>
+        <h1 className="uppercase">
+          {ticket_type} TICKET NO : {ticket_id}
+        </h1>
+      </div>
+    </div>
+    //   {/* card end*/}
+  );
+};
+
+interface DataTicket {
+  category: string;
+  price: string;
+  quota: string;
+}
+
+export const CardTicket: FC<Partial<DataTicket>> = (props) => {
+  const { category, price, quota } = props;
+  const [num, setNum] = useState(0);
+  return (
+    <div className="flex flex-col w-40 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
+      <h1 className="font-bold text-2xl ">{category}</h1>
+      <h1 className="text-2xl">{price}</h1>
+      <div className="flex flex-row mb-3 text-2xl gap-4 justify-center items-center">
+        <BsDashSquareFill
+          className="text-@19345E hover:scale-125 cursor-pointer"
+          onClick={() => {
+            if (num > 0) {
+              setNum(num - 1);
+            }
+          }}
+        />
+        <h1>{num}</h1>
+        <BsFillPlusSquareFill
+          className="text-@19345E hover:scale-125 cursor-pointer"
+          onClick={() => {
+            if (num < 5) {
+              setNum(num + 1);
+            }
+          }}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -283,37 +359,65 @@ export const CardUSerComment: FC<Partial<DataUSerComment>> = (props) => {
   );
 };
 
-interface DataTicket {
-  category: string;
-  price: string;
-  quota: string;
+interface PropsInvoice {
+  name: string;
+  hostedby: string;
+  date: string;
+  place: string;
+  tot_ticket: number;
+  ticket_type: string;
+  price: number;
+  tot_price: number;
+  total_pay: number;
+  payment_method: string;
 }
-
-export const CardTicket: FC<Partial<DataTicket>> = (props) => {
-  const { category, price, quota } = props;
-  const [num, setNum] = useState(0);
+export const CardInvoice: FC<PropsInvoice> = (props) => {
+  const {
+    name,
+    hostedby,
+    date,
+    place,
+    ticket_type,
+    price,
+    tot_price,
+    tot_ticket,
+    total_pay,
+    payment_method,
+  } = props;
   return (
-    <div className="flex flex-col w-40 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
-      <h1 className="font-bold text-2xl ">{category}</h1>
-      <h1 className="text-2xl">{price}</h1>
-      <div className="flex flex-row mb-3 text-2xl gap-4 justify-center items-center">
-        <BsDashSquareFill
-          className="text-@19345E hover:scale-125 cursor-pointer"
-          onClick={() => {
-            if (num > 0) {
-              setNum(num - 1);
-            }
-          }}
-        />
-        <h1>{num}</h1>
-        <BsFillPlusSquareFill
-          className="text-@19345E hover:scale-125 cursor-pointer"
-          onClick={() => {
-            if (num < 5) {
-              setNum(num + 1);
-            }
-          }}
-        />
+    <div className="flex flex-col p-5 w-86 ">
+      <div className="flex justify-center items-center">
+        <img src="./Logo2.png" alt="" className="w-56 items-center" />
+      </div>
+      <p className="font-semibold text-@19345E text-2xl items-start">Invoice</p>
+      <p className="event-name font-semibold text-lg capitalize">{name} </p>
+      <p className="event-date font-semibold text-md text-slate-600 capitalize">
+        {date}
+      </p>
+      <p className="hosted-by font-semibold text-md text-slate-600 capitalize">
+        Hosted by {hostedby}, {place}
+      </p>
+      <p className="event-name font-semibold text-lg capitalize">Details</p>
+      <table>
+        <tbody className="w-full">
+          <tr className="border-b-2 border-t-2 border-black capitalize">
+            <td>items</td> <td>price</td> <td>quantity</td> <td>total</td>
+          </tr>
+          <tr className=" border-black capitalize">
+            <td>{ticket_type} ticket</td> <td>Rp. {price}</td>
+            <td>{tot_ticket}</td> <td>{tot_price}</td>
+          </tr>
+          <tr className=" border-black capitalize items-end">
+            <td></td>
+            <td></td>
+            <td>Total Payment</td> <td>Rp.{total_pay}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p> Payment Using {payment_method}</p>
+      <div className="flex items-center justify-center">
+        <p>Thank you for the join, </p>
+        <p className="p-2 font-bold">{name}</p>
       </div>
     </div>
   );
