@@ -16,6 +16,7 @@ export interface EventType {
   user_id: number;
   name: string;
   date: string;
+  hostedby: string;
   event_image: any;
 }
 

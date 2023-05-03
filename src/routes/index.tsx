@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
@@ -20,6 +24,9 @@ axios.defaults.baseURL =
   "https://virtserver.swaggerhub.com/MUJAHID170997/EventGenieAPI/1.0.0";
 
 const Routes: FC = () => {
+  const [cookie] = useCookies(["token"]);
+  const checkToken = cookie.token;
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -27,39 +34,39 @@ const Routes: FC = () => {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: checkToken ? <Home /> : <Login />,
     },
     {
       path: "/register",
-      element: <Register />,
+      element: checkToken ? <Home /> : <Register />,
     },
     {
       path: "/users",
-      element: <ProfileUser />,
+      element: checkToken ? <ProfileUser /> : <Home />,
     },
     {
       path: "/my-event",
-      element: <MyEvent />,
+      element: checkToken ? <MyEvent /> : <Home />,
     },
     {
-      path: "/detail-event/:name",
+      path: "/detail-event/:id",
       element: <DetailEvent />,
     },
     {
       path: "/add-event",
-      element: <AddEvent />,
+      element: checkToken ? <AddEvent /> : <Home />,
     },
     {
       path: "/update-event/:name",
-      element: <UpdateEvent />,
+      element: checkToken ? <UpdateEvent /> : <Home />,
     },
     {
       path: "/payment",
-      element: <Payment />,
+      element: checkToken ? <Payment /> : <Home />,
     },
     {
       path: "/my-ticket",
-      element: <MyTicket />,
+      element: checkToken ? <MyTicket /> : <Home />,
     },
     {
       path: "/test",

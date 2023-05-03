@@ -8,13 +8,16 @@ import axios from "axios";
 import { Input, TextArea } from "@/components/Input";
 import { PrimButton } from "@/components/Button";
 import { Layout } from "@/components/Layout";
-import { AddDataEvent, UpdateDataEvent, EventDataType } from "@/utils/user";
+import { UpdateDataEvent } from "@/utils/user";
 
 const UpdateEvent: FC = () => {
   const [eventSubmit, setEventSubmit] = useState<Partial<UpdateDataEvent>>({});
   const [data, setData] = useState<Partial<UpdateDataEvent>>({});
   const [ticketList, setTicketList] = useState([]);
   const navigate = useNavigate();
+
+  const params = useParams();
+  const { id } = params;
 
   document.title = "Update Event | Event Genie";
 
@@ -24,7 +27,7 @@ const UpdateEvent: FC = () => {
 
   function fetchDetailEvent() {
     axios
-      .get(`events/eventsID`)
+      .get(`events/${id}`)
       .then((response) => {
         const { data } = response.data;
         setEventSubmit(data);

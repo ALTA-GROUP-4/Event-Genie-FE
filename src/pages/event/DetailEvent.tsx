@@ -27,7 +27,7 @@ const DetailEvent: FC = () => {
 
   const checkEmail = "ucup@gmail.com";
 
-  const { user_id } = params;
+  const { id } = params;
 
   useEffect(() => {
     setUserId(true);
@@ -39,7 +39,7 @@ const DetailEvent: FC = () => {
 
   function fetchDetailEvent() {
     axios
-      .get(`events/eventsID`)
+      .get(`events/${id}`)
       .then((response) => {
         const { data } = response.data;
         document.title = `${data.name}`;
@@ -162,7 +162,7 @@ const DetailEvent: FC = () => {
               </h1>
             </div>
             <div>
-              {checkEmail !== user_id && checkToken ? (
+              {checkEmail !== id && checkToken ? (
                 <></>
               ) : (
                 <PrimButton
