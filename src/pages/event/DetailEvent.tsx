@@ -76,7 +76,7 @@ const DetailEvent: FC = () => {
 
   const fetchComment = () => {
     axios
-      .get(`events/eventsID`)
+      .get(`events/${id}`)
       .then((response) => {
         const { comment } = response.data;
         setComment(comment);

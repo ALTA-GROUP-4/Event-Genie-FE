@@ -45,7 +45,6 @@ const Login: FC = () => {
         }).then((result) => {
           if (result.isConfirmed) {
             setCookie("token", data.token, { path: "/" });
-            setCookie("email", data.username, { path: "/" });
             navigate("/");
           }
         });
