@@ -57,3 +57,8 @@ export interface UserComment extends EventDataType {
   content: string;
   id: number;
 }
+export interface DataTicket {
+  tikcet: string;
+  price: number;
+  qouta: number;
+}

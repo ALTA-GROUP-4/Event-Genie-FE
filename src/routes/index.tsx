@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 
 import Test from "@/pages/test";
-// import PDF from "@/pages/event/PDF";
+import PDF from "@/pages/event/PDF";
 import Home from "@/pages/index";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
@@ -69,10 +69,10 @@ const Routes: FC = () => {
       path: "/my-ticket",
       element: checkToken ? <MyTicket /> : <Home />,
     },
-    // {
-    //   path: "/PDF",
-    //   element: <PDF />,
-    // },
+    {
+      path: "/PDF",
+      element: <PDF />,
+    },
     {
       path: "/test",
       element: <Test />,

@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 import { useCookies } from "react-cookie";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -13,7 +14,8 @@ import { UpdateDataEvent } from "@/utils/user";
 const UpdateEvent: FC = () => {
   const [eventSubmit, setEventSubmit] = useState<Partial<UpdateDataEvent>>({});
   const [data, setData] = useState<Partial<UpdateDataEvent>>({});
-  const [ticketList, setTicketList] = useState([]);
+  const [ticket, setTicket] = useState<string[]>([]);
+  const [isDisabled, setIsDisabled] = useState(true);
   const navigate = useNavigate();
 
   const params = useParams();
@@ -50,6 +52,7 @@ const UpdateEvent: FC = () => {
     for (key in eventSubmit) {
       formData.append(key, eventSubmit[key] as string);
     }
+    setIsDisabled(true);
     axios
       .put(`events/eventsID`, formData, {
         headers: {
@@ -89,6 +92,25 @@ const UpdateEvent: FC = () => {
         });
       });
   }
+
+  const addTicket = () => {
+    setTicket([...ticket, ""]);
+  };
+
+  const deleteTikcet = (index: number) => {
+    const newTikcet = [...ticket];
+    newTikcet.splice(index, 1);
+    setTicket(newTikcet);
+  };
+
+  const handleTicketChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newTikcet = [...ticket];
+    newTikcet[index] = event.target.value;
+    setTicket(newTikcet);
+  };
 
   return (
     <Layout>
@@ -132,7 +154,8 @@ const UpdateEvent: FC = () => {
                 />
               </label>
             </div>
-            <form className="flex flex-col lg:flex-row p-2 gap-2">
+
+            <form className="flex flex-col lg:flex-row gap-2">
               <div className="w-80 lg:w-40">
                 <label className="font-bold dark:text-white">Ticket</label>
                 <Input
@@ -170,6 +193,51 @@ const UpdateEvent: FC = () => {
                 />
               </div>
             </form>
+            {ticket.map((tic, index) => (
+              <div className="flex flex-col lg:flex-row gap-2">
+                <div className="w-80 lg:w-40">
+                  <label className="font-bold dark:text-white">Ticket</label>
+                  <Input
+                    placeholder="Insert Ticket Name"
+                    id="ticket_name"
+                    type="text"
+                    onChange={(event) =>
+                      handleChange(event.target.value, "ticket")
+                    }
+                  />
+                </div>
+                <div className="w-80 lg:w-40">
+                  <label className="font-bold dark:text-white">Price</label>
+                  <Input
+                    placeholder="Insert Ticket Price"
+                    id="ticket_price"
+                    type="text"
+                    onChange={(event) =>
+                      handleChange(event.target.value, "price")
+                    }
+                  />
+                </div>
+                <div className="w-80 lg:w-40">
+                  <label className="font-bold dark:text-white">Quota</label>
+                  <Input
+                    placeholder="Insert Ticket Capacity"
+                    id="ticket_quota"
+                    type="text"
+                    onChange={(event) =>
+                      handleChange(event.target.value, "goalquota")
+                    }
+                  />
+                </div>
+
+                <button
+                  id="delete-ticket"
+                  className="mt-4 text-@19345E text-2xl hover:scale-110"
+                  onClick={() => deleteTikcet(index)}
+                >
+                  <RiDeleteBin2Fill />
+                </button>
+              </div>
+            ))}
             <div className="p-2">
               <PrimButton
                 label="Add Ticket"
@@ -177,6 +245,7 @@ const UpdateEvent: FC = () => {
                 type="button"
                 className="w-40 bg-@19345E text-@EBF2FA font-semibold py-2 px-8 
                 rounded-lg border  hover:scale-105 active:bg-gray-200 disabled:bg-gray-400"
+                onClick={() => addTicket()}
               />
             </div>
           </div>
