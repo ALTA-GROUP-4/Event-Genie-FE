@@ -128,7 +128,7 @@ const DetailEvent: FC = () => {
               </h1>
             </div>
             <div>
-              {checkEmail !== id && checkToken ? (
+              {checkEmail === id && checkToken ? (
                 <></>
               ) : (
                 <PrimButton
@@ -202,7 +202,12 @@ const DetailEvent: FC = () => {
                 )}
               </div>
               <div>
-                <PrimButton label="Order" id=" button-order" type="button" />
+                <PrimButton
+                  label="Order"
+                  id=" button-order"
+                  type="button"
+                  onClick={() => navigate("/payment")}
+                />
               </div>
             </form>
           </div>
