@@ -18,7 +18,6 @@ interface PropsHandling {
 export const CardLanding: FC<PropsHandling> = (props) => {
   const { event_name, event_image, MyLink, host_by, event_date } = props;
   return (
-    //   {/* card start*/}
     <div className="drop-shadow hover:drop-shadow-lg hover:scale-105 duration-300 flex flex-col bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
       <Link to={MyLink}>
         <img
@@ -41,7 +40,6 @@ export const CardLanding: FC<PropsHandling> = (props) => {
         </h3>
       </div>
     </div>
-    //   {/* card end*/}
   );
 };
 
@@ -57,16 +55,8 @@ interface PropsMyEvent {
 }
 
 export const CardMyEvent: FC<PropsMyEvent> = (props) => {
-  const {
-    event_name,
-    edit,
-    del,
-    event_image,
-    MyLink,
-    event_date,
-    host_by,
-    place,
-  } = props;
+  const { event_name, edit, event_image, MyLink, event_date, host_by, place } =
+    props;
   const navigate = useNavigate();
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -111,7 +101,6 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
   }
 
   return (
-    //   {/* card start*/}
     <div className="hover:drop-shadow-lg hover:scale-105 duration-300  bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700">
       <div className="flex flex-col md:flex-row px-2 py-5 md:pt-5 items-center ">
         <Link to={MyLink}>
@@ -170,7 +159,6 @@ export const CardMyEvent: FC<PropsMyEvent> = (props) => {
         </div>
       </div>
     </div>
-    //   {/* card end*/}
   );
 };
 
@@ -185,7 +173,6 @@ interface PropsMyTickets {
 export const CardMyTicket: FC<PropsMyTickets> = (props) => {
   const { event_name, event_image, event_date, host_by, place } = props;
   return (
-    //   {/* card start*/}
     <div className="hover:drop-shadow-lg hover:scale-105 duration-300  bg-@EBF2FA rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700">
       <div className="flex flex-col md:flex-row px-2 py-5 md:pt-5 items-center ">
         <img
@@ -233,7 +220,6 @@ export const CardMyTicket: FC<PropsMyTickets> = (props) => {
         </div>
       </div>
     </div>
-    //   {/* card end*/}
   );
 };
 
@@ -251,7 +237,6 @@ export const CardTicketEvent: FC<PropsTickets> = (props) => {
   const { name, hostedby, date, place, tot_ticket, ticket_type, ticket_id } =
     props;
   return (
-    //   {/* card start*/}
     <div className="flex flex-col w-60 bg-white shadow-xl border rounded-lg border-@19345E justify-center items-center">
       <div className="m-4">
         <img src="/Logo2.png" alt="" className="w-28" />
@@ -271,7 +256,6 @@ export const CardTicketEvent: FC<PropsTickets> = (props) => {
         </h1>
       </div>
     </div>
-    //   {/* card end*/}
   );
 };
 

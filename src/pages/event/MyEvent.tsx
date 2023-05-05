@@ -68,31 +68,6 @@ const MyEvent: FC = () => {
               />
             );
           })}
-
-          {/* <CardMyEvent
-            event_image="./bg.jpg"
-            MyLink={`/detail-event`}
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Produtc School"
-            place="Jakarta"
-          />
-          <CardMyEvent
-            event_image="./bg.jpg"
-            MyLink={`/detail-event`}
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Produtc School"
-            place="Jakarta"
-          />
-          <CardMyEvent
-            event_image="./bg.jpg"
-            MyLink={`/detail-event`}
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Produtc School"
-            place="Jakarta"
-          /> */}
         </div>
       </div>
     </Layout>
