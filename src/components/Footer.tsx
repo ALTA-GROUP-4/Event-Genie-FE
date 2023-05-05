@@ -5,7 +5,6 @@ export const Footer: FC = () => {
     <div>
       <footer className="bg-@19345E">
         <div className="max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
-          {/* <!-- Grid --> */}
           <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
             <div className="col-span-full lg:col-span-1">
               <img src="/Logo1.png" alt="" />
@@ -17,13 +16,10 @@ export const Footer: FC = () => {
                 EventGenie.
               </a>
             </div>
-            {/* <!-- End Col --> */}
-
             <div className="col-span-1">
               <h4 className="font-semibold text-@EBF2FA hover:text-white">
                 About Us
               </h4>
-
               <div className="mt-3 grid space-y-3">
                 <p>
                   <a
@@ -36,8 +32,6 @@ export const Footer: FC = () => {
                 </p>
               </div>
             </div>
-            {/* <!-- End Col --> */}
-
             <div className="col-span-1">
               <h4 className="font-semibold text-@EBF2FA hover:text-white">
                 Term & Condition
@@ -57,7 +51,6 @@ export const Footer: FC = () => {
                 </p>
               </div>
             </div>
-            {/* <!-- End Col --> */}
 
             <div className="col-span-2">
               <h4 className="font-semibold text-@EBF2FA hover:text-white">
@@ -88,9 +81,7 @@ export const Footer: FC = () => {
                 </p>
               </form>
             </div>
-            {/* <!-- End Col --> */}
           </div>
-          {/* <!-- End Grid --> */}
         </div>
       </footer>
       <footer className="bg-@19345E">
@@ -101,9 +92,6 @@ export const Footer: FC = () => {
                 © 2022 Alterra Academy. All right reserved.
               </p>
             </div>
-            {/* <!-- End Col --> */}
-
-            {/* <!-- Social Brands --> */}
             <div>
               <a
                 className="inline-flex justify-center items-center gap-x-3.5 w-10 h-10 text-center text-gray-200 hover:bg-white/[.1] rounded-md "
@@ -181,7 +169,6 @@ export const Footer: FC = () => {
                 </svg>
               </a>
             </div>
-            {/* <!-- End Social Brands --> */}
           </div>
         </div>
       </footer>

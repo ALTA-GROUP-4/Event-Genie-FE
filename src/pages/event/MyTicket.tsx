@@ -110,34 +110,6 @@ const MyTicket: FC = () => {
             </form>
           </div>
         </div>
-
-        {/* <div className="py-6 px-6 grid grid-cols-1  gap-4 ">
-          <CardMyTicket
-            event_image="./bg.jpg"
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Product School"
-            place="Jakarta"
-          />
-        </div>
-        <div className="py-6 px-6 grid grid-cols-1  gap-4 ">
-          <CardMyTicket
-            event_image="./bg.jpg"
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Product School"
-            place="Jakarta"
-          />
-        </div>
-        <div className="py-6 px-6 grid grid-cols-1  gap-4 ">
-          <CardMyTicket
-            event_image="./bg.jpg"
-            event_name="Webinar: Your Product Manager Career by PlayStation Sr PM"
-            event_date="Monday, 22-May-2023"
-            host_by="Product School"
-            place="Jakarta"
-          />
-        </div> */}
       </div>
     </Layout>
   );

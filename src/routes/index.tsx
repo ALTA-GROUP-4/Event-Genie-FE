@@ -3,8 +3,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { FC, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { FC } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 

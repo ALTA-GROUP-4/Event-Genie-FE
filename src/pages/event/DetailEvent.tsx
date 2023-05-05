@@ -120,40 +120,6 @@ const DetailEvent: FC = () => {
             {data.description}
           </p>
         </div>
-        {/* {checkToken ? (
-          <div>
-            <div className="flex justify-between">
-              <div>
-                <h1 className="px-6 font-bold text-@19345E text-2xl  md:texl-3xl lg:text-5xl  capitalize ">
-                  Coments
-                </h1>
-              </div>
-              <div>
-                {checkEmail !== user_id && checkToken ? (
-                  <></>
-                ) : (
-                  <PrimButton
-                    label="Join"
-                    id=" button-join"
-                    type="button"
-                    data-hs-overlay="#hs-medium-modal"
-                  />
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row px-6 my-6 ">
-              <div className="">
-                <img src="/users.png" alt="" className="hidden md:block pr-4" />
-              </div>
-              <div className="w-full mt-2">
-                <Comments placeholder="Add a comment...." id="comments" />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )} */}
-
         <div>
           <div className="flex justify-between">
             <div>
@@ -176,13 +142,6 @@ const DetailEvent: FC = () => {
           </div>
         </div>
         <div>
-          {/* {loading ? (
-            <Loading />
-          ) : (
-            datas.map((user) => {
-              return <CardUSerComment image="/users.png" name={user.name} />;
-            })
-          )} */}
           <CardUSerComment image="/users.png" name="Jack" />
         </div>
         <div className="p-3">
@@ -222,6 +181,19 @@ const DetailEvent: FC = () => {
                     return (
                       <CardTicket
                         category="VIP"
+                        price={ticket.price}
+                        quota={ticket.currentqouta}
+                      />
+                    );
+                  })
+                )}
+                {loading ? (
+                  <Loading />
+                ) : (
+                  ticket.map((ticket) => {
+                    return (
+                      <CardTicket
+                        category="Regular"
                         price={ticket.price}
                         quota={ticket.currentqouta}
                       />

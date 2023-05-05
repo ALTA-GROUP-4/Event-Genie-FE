@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, FormEvent } from "react";
+import { FC, useState, FormEvent } from "react";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -210,7 +210,6 @@ const AddEvent: FC = () => {
                       }
                     />
                   </div>
-
                   <button
                     id="delete-ticket"
                     className="mt-4 text-@19345E text-2xl hover:scale-110"
